@@ -3,10 +3,9 @@
 -- Host: localhost    Database: registro
 -- ------------------------------------------------------
 -- Server version	8.0.36
-
-drop database if exists registro;
-create database registro;
-use registro;
+drop database if exists db_docente;
+create database db_docente;
+use db_docente;
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -27,7 +26,7 @@ DROP TABLE IF EXISTS `persona`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `persona` (
   `id_persona` int NOT NULL AUTO_INCREMENT,
-  `nit` varchar(15) DEFAULT NULL,
+  `genero` varchar(15) DEFAULT NULL,
   `nombres` varchar(60) DEFAULT NULL,
   `apellidos` varchar(60) DEFAULT NULL,
   `direccion` varchar(100) DEFAULT NULL,
@@ -47,7 +46,7 @@ CREATE TABLE `persona` (
 
 LOCK TABLES `persona` WRITE;
 /*!40000 ALTER TABLE `persona` DISABLE KEYS */;
-INSERT INTO `persona` VALUES (7,'10584667-8','Mari','Espada Juarez','Boca del monte, zona 4','3378-3177','2001-05-27','502E1',3750.24,'2024-04-04','2024-09-17 20:30:29');
+INSERT INTO `persona` VALUES (7,'mujer','Mari','Espada Juarez','Boca del monte, zona 4','3378-3177','2001-05-27','502E1',3750.24,'2024-04-04','2024-09-17 20:30:29');
 /*!40000 ALTER TABLE `persona` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -60,4 +59,5 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+select * from db_docente.persona;
 -- Dump completed on 2024-09-14 22:43:23

@@ -27,7 +27,7 @@ public class frm_registro extends javax.swing.JFrame {
     private void  setDate(){
         LocalDate now = LocalDate.now();
         Locale spanishLocale = new Locale("es", "ES");
-        lbl_fecha.setText(now.format(DateTimeFormatter.ofPattern("' ' EEEE dd 'de' MMM 'de' YYYY", spanishLocale)));
+        // lbl_fecha.setText(now.format(DateTimeFormatter.ofPattern("' ' EEEE dd 'de' MMM 'de' YYYY", spanishLocale)));
     }
 
         private void select_datos(){
@@ -54,7 +54,6 @@ public class frm_registro extends javax.swing.JFrame {
         panel_cerrar = new javax.swing.JPanel();
         lbl_cerrar = new javax.swing.JLabel();
         panel_encabezado = new javax.swing.JPanel();
-        lbl_fecha = new javax.swing.JLabel();
         lbl_nit = new javax.swing.JLabel();
         lbl_nombres = new javax.swing.JLabel();
         lbl_direccion = new javax.swing.JLabel();
@@ -82,6 +81,7 @@ public class frm_registro extends javax.swing.JFrame {
         lbl_nit2 = new javax.swing.JLabel();
         lbl_fondo = new javax.swing.JLabel();
         lbl_titulo = new javax.swing.JLabel();
+        texto_aclarar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -135,19 +135,12 @@ public class frm_registro extends javax.swing.JFrame {
             }
         });
         panel_encabezado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lbl_fecha.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lbl_fecha.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_fecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_fecha.setText("{dayname}{day} de {month} de {year} ");
-        panel_encabezado.add(lbl_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 350, 20));
-
         panel_principal.add(panel_encabezado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         lbl_nit.setBackground(new java.awt.Color(255, 255, 252));
         lbl_nit.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lbl_nit.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_nit.setText("Nit:");
+        lbl_nit.setText("Genero");
         panel_principal.add(lbl_nit, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 100, 30));
 
         lbl_nombres.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -298,17 +291,17 @@ public class frm_registro extends javax.swing.JFrame {
 
         table_datos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9", "Title 10", "Title 11"
+                "ID", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9", "Title 10"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true, true, true, true, true, true, false, true, true
+                false, true, true, true, true, true, true, true, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -322,18 +315,18 @@ public class frm_registro extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(table_datos);
 
-        panel_principal.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 810, 150));
+        panel_principal.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, 620, 90));
 
         lbl_id.setBackground(new java.awt.Color(255, 255, 252));
         lbl_id.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lbl_id.setForeground(new java.awt.Color(255, 255, 255));
-        panel_principal.add(lbl_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 100, 30));
+        panel_principal.add(lbl_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 100, 30));
 
         lbl_nit2.setBackground(new java.awt.Color(255, 255, 252));
         lbl_nit2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lbl_nit2.setForeground(new java.awt.Color(255, 255, 255));
         lbl_nit2.setText("Id:");
-        panel_principal.add(lbl_nit2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 100, 30));
+        panel_principal.add(lbl_nit2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 100, 30));
 
         lbl_fondo.setBackground(new java.awt.Color(0, 0, 153));
         panel_principal.add(lbl_fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 830, 460));
@@ -343,6 +336,10 @@ public class frm_registro extends javax.swing.JFrame {
         lbl_titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_titulo.setText("Formulario docente");
         panel_principal.add(lbl_titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, 280, 48));
+
+        texto_aclarar.setForeground(new java.awt.Color(255, 255, 255));
+        texto_aclarar.setText("Si es hombre 0 y si es mujer 1");
+        panel_principal.add(texto_aclarar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -518,7 +515,6 @@ public class frm_registro extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_cerrar;
     private javax.swing.JLabel lbl_codigo;
     private javax.swing.JLabel lbl_direccion;
-    private javax.swing.JLabel lbl_fecha;
     private javax.swing.JLabel lbl_fondo;
     private javax.swing.JLabel lbl_id;
     private javax.swing.JLabel lbl_labores;
@@ -533,6 +529,7 @@ public class frm_registro extends javax.swing.JFrame {
     private javax.swing.JPanel panel_encabezado;
     private javax.swing.JPanel panel_principal;
     private javax.swing.JTable table_datos;
+    private javax.swing.JLabel texto_aclarar;
     private javax.swing.JTextField txt_apellidos;
     private javax.swing.JTextField txt_codigo;
     private javax.swing.JTextField txt_direccion;

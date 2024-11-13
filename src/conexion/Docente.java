@@ -16,8 +16,8 @@ public class Docente extends Persona {
     conexion_db cn;
     
     public Docente(){}
-    public Docente(int id_persona, String nit, String nombres, String apellidos, String direccion, String telefono, String nacimiento, Double salario, String codigo, String fecha_labores) {
-        super(nit, nombres, apellidos, direccion, telefono, nacimiento, salario, codigo, fecha_labores);
+    public Docente(int id_persona, String genero, String nombres, String apellidos, String direccion, String telefono, String nacimiento, Double salario, String codigo, String fecha_labores) {
+        super(genero, nombres, apellidos, direccion, telefono, nacimiento, salario, codigo, fecha_labores);
         this.id_persona = id_persona;
     }
 
@@ -36,14 +36,14 @@ public void crear() {
         cn.abrir_conexion();
         
         // Modificar la consulta para que "fecha_ingreso_registro" se complete con CURRENT_TIMESTAMP
-        String query = "INSERT INTO persona(nit,nombres,apellidos,direccion,telefono,fecha_nacimiento,codigo_docente,salario,fecha_ingreso_laborar,fecha_ingreso_registro) "
-                     + "VALUES(?,?,?,?,?,?,?,?,?,CURRENT_TIMESTAMP);";
+        String query = "INSERT INTO persona(genero,nombres,apellidos,direccion,telefono,fecha_nacimiento,codigo_docente,salario,fecha_ingreso_laborar) "
+                     + "VALUES(?,?,?,?,?,?,?,?,?);";
         
         // Preparar el Statement
         parametro = (PreparedStatement) cn.conectar_db.prepareStatement(query);
         
         // Asignar valores a los placeholders
-        parametro.setString(1, getNit());
+        parametro.setString(1, getGenero());
         parametro.setString(2, getNombres());
         parametro.setString(3, getApellidos());
         parametro.setString(4, getDireccion());
@@ -75,12 +75,12 @@ public void crear() {
             cn.abrir_conexion();
             String query = "select *from persona";
             ResultSet consulta = cn.conectar_db.createStatement().executeQuery(query);
-            String encabezado []= {"ID", "NIT", "NOMBRES", "APELLIDOS", "DIRECCION", "TELEFONO", "F. NACIMIENTO", "CODIGO DOCENTE", "SALARIO", "F. I. LABORES", "F. I. REGISTRO"};
+            String encabezado []= {"ID", "GENERO", "NOMBRES", "APELLIDOS", "DIRECCION", "TELEFONO", "F. NACIMIENTO", "CODIGO DOCENTE", "SALARIO", "F. I. LABORES",};
             tabla.setColumnIdentifiers(encabezado);
             String datos[]= new String[11];
             while(consulta.next()){
                 datos[0] = consulta.getString("id_persona");
-                datos[1] = consulta.getString("nit");
+                datos[1] = consulta.getString("genero");
                 datos[2] = consulta.getString("nombres");
                 datos[3] = consulta.getString("apellidos");
                 datos[4] = consulta.getString("direccion");
@@ -89,7 +89,7 @@ public void crear() {
                 datos[7] = consulta.getString("codigo_docente");
                 datos[8] = consulta.getString("salario");
                 datos[9] = consulta.getString("fecha_ingreso_laborar");
-                datos[10] = consulta.getString("fecha_ingreso_registro");
+                // datos[10] = consulta.getString("fecha_ingreso_registro");
                 tabla.addRow(datos);
                 
             }
@@ -109,12 +109,12 @@ public void crear() {
         cn.abrir_conexion();
 
         // Consulta SQL para actualizar los datos del empleado
-        String query = "UPDATE persona SET nit = ?, nombres = ?, apellidos = ?, direccion = ?, telefono = ?, fecha_nacimiento = ?, codigo_docente = ?, salario = ?, fecha_ingreso_laborar  = ? WHERE id_persona = ?;";
+        String query = "UPDATE persona SET genero = ?, nombres = ?, apellidos = ?, direccion = ?, telefono = ?, fecha_nacimiento = ?, codigo_docente = ?, salario = ?, fecha_ingreso_laborar  = ? WHERE id_persona = ?;";
 
         parametro = (PreparedStatement) cn.conectar_db.prepareStatement(query);
 
         // Asignación de valores a los parámetros de la consulta
-        parametro.setString(1, getNit());
+        parametro.setString(1, getGenero());
         parametro.setString(2, getNombres());
         parametro.setString(3, getApellidos());
         parametro.setString(4, getDireccion());

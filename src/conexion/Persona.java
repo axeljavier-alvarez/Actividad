@@ -9,12 +9,12 @@ import javax.swing.table.DefaultTableModel;
  * @author robin
  */
 abstract class Persona {
-    private String  nit, nombres, apellidos, direccion, telefono, nacimiento, codigo, fecha_labores;
+    private String  genero, nombres, apellidos, direccion, telefono, nacimiento, codigo, fecha_labores;
     private Double salario;
         
     public Persona(){}
-    public Persona(String nit, String nombres, String apellidos, String direccion, String telefono, String nacimiento, Double salario, String codigo, String fecha_labores) {
-        this.nit = nit;
+    public Persona(String genero, String nombres, String apellidos, String direccion, String telefono, String nacimiento, Double salario, String codigo, String fecha_labores) {
+        this.genero = genero;
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.direccion = direccion;
@@ -25,13 +25,15 @@ abstract class Persona {
         this.fecha_labores = fecha_labores;
     }
 
-    public String getNit() {
-        return nit;
+    public String getGenero() {
+        return genero;
     }
 
-    public void setNit(String nit) {
-        this.nit = nit;
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
+
+    
 
     public String getNombres() {
         return nombres;
